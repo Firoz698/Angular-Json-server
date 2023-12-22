@@ -1,0 +1,75 @@
+<div class="container">
+    <h1>Hello Json and AgGrid</h1>
+    <div class="button-Section d-flex justify-content-end my-4">
+        <button class="btn btn-info" (click)="AddModal()">Add data</button>
+        <button class="btn btn-warning mx-2" (click)="EditMethod()">Edit</button>
+        <button class="btn btn-danger" (click)="DeletedMethod()">Remove</button>
+    </div>
+    <ag-grid-angular
+    class="ag-theme-quartz"
+    style="height: 500px;width: 100%;"
+    [defaultColDef]="defaultColDef"
+    [rowData]="rewData"
+    (rowClicked)="RowClickMethod($event)"
+    (rowDoubleClicked)="RowDbClickMe()"
+    [columnDefs]="colDefs"
+    [rowSelection]="'multiple'"
+    ></ag-grid-angular>
+</div>
+
+
+
+
+
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" hidden id="ModalId" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Name" [(ngModel)]="this.UserStore.name" name="name">
+                <label for="floatingInput">Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingPassword" placeholder="Email Address" [(ngModel)]="this.UserStore.email" name="email">
+                <label for="floatingPassword">Email Address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Father Name" [(ngModel)]="this.UserStore.fatherName" name="fatherName">
+                <label for="floatingInput">Father Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="village" [(ngModel)]="this.UserStore.village" name="village">
+                <label for="floatingInput">village</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingPassword" placeholder="Your City" [(ngModel)]="this.UserStore.city" name="city">
+                <label for="floatingPassword">Your City</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="About" [(ngModel)]="this.UserStore.about" name="about">
+                <label for="floatingInput">About</label>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="CloseId" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" *ngIf="!IsActive" (click)="SaveChangeMethod()">Save changes</button>
+          <button type="button" class="btn btn-primary"*ngIf="IsActive" (click)="UpdateMethod()">Updata User</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
